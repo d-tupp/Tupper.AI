@@ -1,0 +1,60 @@
+{
+  "root": {
+    "name": "Eliakim Tupper",
+    "birth": 1711,
+    "death": 1761,
+    "spouse": "Mary Bassett (1709-1753)",
+    "children": [
+      {
+        "name": "Charles Eliakim Tupper",
+        "birth": 1748,
+        "death": 1821,
+        "spouse": "Elizabeth West (1754-1839)",
+        "children": [
+          {
+            "name": "Charles Tupper Sr.",
+            "birth": 1794,
+            "death": 1881,
+            "spouse": "Miriam Knowlton Lockhart (1780-1851)",
+            "children": [
+              {
+                "name": "Sir Charles Tupper",
+                "birth": 1821,
+                "death": 1915,
+                "spouse": "Frances Amelia Morse (1826-1912)",
+                "notes": "6th Prime Minister of Canada; descendant of Richard Warren (Mayflower passenger)",
+                "children": [
+                  { "name": "Emma Tupper" },
+                  { "name": "Elizabeth Stewart 'Lilly' Tupper" },
+                  { "name": "Sophy Almon Tupper" },
+                  { "name": "Orin Stewart Tupper", "death": 1915 },
+                  {
+                    "name": "Sir Charles Hibbert Tupper",
+                    "birth": 1855,
+                    "death": 1927,
+                    "spouse": "Janet Charlotte McDonald (1858-1935)",
+                    "children": [
+                      { "name": "Sir Charles Tupper Bt", "birth": 1880, "death": 1962 },
+                      { "name": "Sophie Almon Tupper", "birth": 1882, "death": 1964 },
+                      { "name": "Frances Lillian Tupper", "birth": 1886, "death": 1940 },
+                      { "name": "Sir James Macdonald Tupper", "birth": 1887, "death": 1967 },
+                      { "name": "Janet Mariam Grace Tupper", "birth": 1891, "death": 1971 },
+                      { "name": "Reginald Hibbert Tupper", "birth": 1893, "death": 1972 },
+                      { "name": "Victor Gordon Tupper", "birth": 1896, "death": 1917 }
+                    ]
+                  },
+                  {
+                    "name": "William Johnston Tupper",
+                    "birth": 1862,
+                    "death": 1947,
+                    "spouse": "Margaret McDonald"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
