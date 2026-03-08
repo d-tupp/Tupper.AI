@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TupperAI - Tupper Family Tree</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+    }
+    #tree-container {
+      margin: 20px auto;
+      overflow: auto;
+    }
+    svg {
+      border: 1px solid #ccc;
+      background: #f9f9f9;
+    }
+    .node {
+      cursor: pointer;
+    }
+    .node circle {
+      fill: #fff;
+      stroke: steelblue;
+      stroke-width: 1.5px;
+    }
+    .node text {
+      font: 12px sans-serif;
+    }
+    .link {
+      fill: none;
+      stroke: #ccc;
+      stroke-width: 1.5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>TupperAI: The Tupper Family Tree</h1>
+  <p>This website provides the full family tree history of the Tupper Family, focusing on the line from Sir Charles Tupper, 6th Prime Minister of Canada. Note that Sir Charles Tupper is a descendant of Richard Warren (c. 1578–1628), a Mayflower passenger.</p>
+  <div id="tree-container"></div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    const familyData = {
+      "name": "Eliakim Tupper (1711-1761)",
+      "spouse": "Mary Bassett (1709-1753)",
+      "children": [
+        {
+          "name": "Charles Eliakim Tupper (1748-1821)",
+          "spouse": "Elizabeth West (1754-1839)",
+          "children": [
+            {
+              "name": "Charles Tupper Sr. (1794-1881)",
+              "spouse": "Miriam Knowlton Lockhart (1780-1851)",
+              "children": [
+                {
+                  "name": "Sir Charles Tupper (1821-1915)",
+                  "spouse": "Frances Amelia Morse (1826-1912)",
+                  "children": [
+                    {
+                      "name": "Emma Tupper"
+                    },
+                    {
+                      "name": "Elizabeth Stewart 'Lilly' Tupper"
+                    },
+                    {
+                      "name": "Sophy Almon Tupper"
+                    },
+                    {
+                      "name": "Orin Stewart Tupper (-1915)"
+                    },
+                    {
+                      "name": "Sir Charles Hibbert Tupper (1855-1927)",
+                      "spouse": "Janet Charlotte McDonald (1858-1935)",
+                      "children": [
+                        {
+                          "name": "Sir Charles Tupper Bt (1880-1962)"
+                        },
+                        {
+                          "name": "Sophie Almon Tupper (1882-1964)"
+                        },
+                        {
+                          "name": "Frances Lillian Tupper (1886-1940)"
+                        },
+                        {
+                          "name": "Sir James Macdonald Tupper (1887-1967)"
+                        },
+                        {
+                          "name": "Janet Mariam Grace Tupper (1891-1971)"
+                        },
+                        {
+                          "name": "Reginald Hibbert Tupper (1893-1972)"
+                        },
+                        {
+                          "name": "Victor Gordon Tupper (1896-1917)"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "William Johnston Tupper (1862-1947)",
+                      "spouse": "Margaret McDonald"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    // Build the tree visualization
+    function buildTree(data) {
+      const root = d3.hierarchy(data, d => d.children);
+      const width = 1200; // Increased width for larger tree
+      const height = 800; // Increased height
+      const treeLayout = d3.tree().size([height, width - 200]);
+      const treeData = treeLayout(root);
+
+      const svg = d3.select("#tree-container")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(100,0)");
+
+      // Draw links
+      svg.selectAll("path")
+        .data(treeData.links())
+        .enter()
+        .append("path")
+        .attr("class", "link")
+        .attr("d", d3.linkHorizontal()
+          .x(d => d.y)
+          .y(d => d.x));
+
+      // Draw nodes
+      const nodes = svg.selectAll("g")
+        .data(treeData.descendants())
+        .enter()
+        .append("g")
+        .attr("class", "node")
+        .attr("transform", d => `translate(${d.y},${d.x})`);
+
+      nodes.append("circle")
+        .attr("r", 5);
+
+      nodes.append("text")
+        .attr("dy", 4)
+        .attr("x", d => d.children ? -8 : 8)
+        .attr("text-anchor", d => d.children ? "end" : "start")
+        .text(d => {
+          let label = d.data.name;
+          if (d.data.spouse) label += ` m. ${d.data.spouse}`;
+          return label;
+        });
+    }
+
+    buildTree(familyData);
+  </script>
+
+  <h2>AI Features</h2>
+  <p>The AI query feature is under development. In future updates, you'll be able to ask natural language questions about the family tree (e.g., "Who are the children of Sir Charles Tupper?") using an integrated AI model.</p>
+</body>
+</html>
