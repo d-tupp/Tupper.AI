@@ -1,3 +1,5 @@
+"use client";
+
 import { NextRequest, NextResponse } from 'next/server';
 import familyTree from '../../../data/familyTree.json'; // Adjust path as needed
 
@@ -9,14 +11,14 @@ export async function POST(req: NextRequest) {
 
   try {
     // Call Grok API (replace with actual endpoint and key)
-    const apiResponse = await fetch('https://api.x.ai/grok/v1/chat', { // Hypothetical endpoint
+    const apiResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer YOUR_GROK_API_KEY`,
+        'Authorization': `Bearer ${process.env.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}`,
       },
       body: JSON.stringify({
-        model: 'grok-4', // Assuming model name
+        model: 'llama-3.1-70b-versatile',  // or 'deepseek-r1', etc.
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: query },
